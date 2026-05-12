@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <UseWindowsForms>false</UseWindowsForms>
+    <UseWPF>false</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>FFXIVSharedLibrary</PackageId>
+    <PackageVersion>1.0.0</PackageVersion>
+    <PackageDescription>Shared utilities and components for FFXIV applications</PackageDescription>
+    <PackageAuthors>FFXIVToolkit</PackageAuthors>
+    <RepositoryUrl>https://github.com/ffxivtoolkit/ffxivsharedlibrary</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../README.md" Pack="true" PackagePath="\" />
+    <None Include="Build\FFXIVSharedLibrary.targets" Pack="true" PackagePath="build\" />
+    <None Include="Build\VersioningTargets.targets" Pack="true" PackagePath="build\" />
+  </ItemGroup>
+
+</Project>

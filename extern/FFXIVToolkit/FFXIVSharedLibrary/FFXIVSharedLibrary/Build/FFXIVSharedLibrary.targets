@@ -1,0 +1,42 @@
+<!--
+  FFXIVSharedLibrary - Automated Versioning Targets
+  
+  Usage: Import this file in your .csproj to get automated JSON versioning
+  
+  <Import Project="path/to/VersioningTargets.targets" />
+  
+  Supports:
+  - Plugin.json files (Dalamud plugins)
+  - FFToD.json files (Legacy format)
+  - Custom JSON files with AssemblyVersion property
+-->
+
+<Project>
+
+  <PropertyGroup>
+    <!-- Default JSON files to update (can be overridden) -->
+    <VersioningJsonFiles Condition="'$(VersioningJsonFiles)' == ''">$(ProjectDir)$(AssemblyName).json;$(ProjectDir)Plugin.json;$(ProjectDir)FFToD.json</VersioningJsonFiles>
+    
+    <!-- Enable/disable versioning (default: enabled) -->
+    <EnableAutoVersioning Condition="'$(EnableAutoVersioning)' == ''">true</EnableAutoVersioning>
+  </PropertyGroup>
+
+  <!-- Auto-update JSON files with current version before build -->
+  <Target Name="UpdateJsonVersions" BeforeTargets="BeforeBuild" Condition="'$(EnableAutoVersioning)' == 'true'">
+    
+    <Message Text="FFXIVSharedLibrary: Updating JSON files to version $(Version)..." Importance="high" />
+
+    <ItemGroup>
+      <JsonFilesToUpdate Include="$(VersioningJsonFiles)" />
+    </ItemGroup>
+
+    <!-- Update each JSON file that exists -->
+    <Exec Command="powershell -Command &quot;if (Test-Path '%(JsonFilesToUpdate.Identity)') { $json = Get-Content '%(JsonFilesToUpdate.Identity)' | ConvertFrom-Json; $json.AssemblyVersion = '$(Version)'; $json | ConvertTo-Json -Depth 10 | Set-Content '%(JsonFilesToUpdate.Identity)'; Write-Host 'Updated %(JsonFilesToUpdate.Filename)%(JsonFilesToUpdate.Extension) to version $(Version)' }&quot;"
+          ContinueOnError="true" 
+          Condition="Exists('%(JsonFilesToUpdate.Identity)')" />
+
+    <Message Text="FFXIVSharedLibrary: JSON versioning complete" Importance="high" />
+    
+  </Target>
+
+</Project>

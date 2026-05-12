@@ -1,0 +1,13 @@
+{
+  "Author": "Kirin",
+  "Name": "SpamrollGiveaway",
+  "Punchline": "Random number giveaway system where players type /random to win.",
+  "Description": "A FFXIV plugin for hosting giveaways where the host sets winning numbers and players use /random until someone hits the target numbers.",
+  "ApplicableVersion": "any",
+  "Tags": [
+    "giveaway",
+    "random",
+    "contest",
+    "ffxiv"
+  ]
+}

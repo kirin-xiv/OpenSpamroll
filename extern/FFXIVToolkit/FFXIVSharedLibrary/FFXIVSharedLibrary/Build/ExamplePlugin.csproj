@@ -1,0 +1,44 @@
+<!--
+  EXAMPLE: How to use FFXIVSharedLibrary's automated versioning
+  
+  This shows how your plugin .csproj should look to get automatic JSON versioning
+-->
+
+<Project Sdk="Dalamud.NET.Sdk/12.0.0">
+
+    <PropertyGroup>
+        <AssemblyName>MyAwesomePlugin</AssemblyName>
+        
+        <!-- Single source of truth for version - change ONLY this line to update everywhere -->
+        <Version>2.1.0.0</Version>
+        <AssemblyVersion>$(Version)</AssemblyVersion>
+        <FileVersion>$(Version)</FileVersion>
+        
+        <Authors>YourName</Authors>
+        <Description>My awesome FFXIV plugin using FFXIVSharedLibrary</Description>
+        <PackageProjectUrl>https://github.com/yourname/myawesomeplugin</PackageProjectUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        
+        <DalamudApiLevel>12</DalamudApiLevel>
+        <TargetFramework>net9.0-windows</TargetFramework>
+    </PropertyGroup>
+
+    <!-- OPTION 1: Use FFXIVSharedLibrary as Project Reference -->
+    <ItemGroup>
+        <ProjectReference Include="..\FFXIVSharedLibrary\FFXIVSharedLibrary\FFXIVSharedLibrary.csproj" />
+    </ItemGroup>
+
+    <!-- OPTION 2: Use FFXIVSharedLibrary as NuGet Package -->
+    <!--
+    <ItemGroup>
+        <PackageReference Include="FFXIVSharedLibrary" Version="1.0.0" />
+    </ItemGroup>
+    -->
+
+    <!-- Import the automated versioning targets -->
+    <Import Project="$(MSBuildThisFileDirectory)..\FFXIVSharedLibrary\FFXIVSharedLibrary\Build\VersioningTargets.targets" />
+    
+    <!-- OR if using NuGet package: -->
+    <!-- The targets will be imported automatically from the NuGet package -->
+
+</Project>

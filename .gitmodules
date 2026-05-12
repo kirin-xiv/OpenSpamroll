@@ -1,0 +1,3 @@
+[submodule "extern/FFXIVToolkit"]
+	path = extern/FFXIVToolkit
+	url = https://github.com/AetherialWorks/FFXIVToolkit.git

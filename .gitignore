@@ -1,0 +1,8 @@
+.vs/
+obj/
+bin/
+*.user
+.claude
+
+# Test projects
+SpamrollGiveaway.Tests/

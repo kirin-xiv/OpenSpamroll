@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Dalamud.NET.Sdk/15.0.0">
+  <PropertyGroup>
+    <AssemblyName>SpamrollGiveaway</AssemblyName>
+    <Version>2.3.7.0</Version>
+    <AssemblyVersion>$(Version)</AssemblyVersion>
+    <FileVersion>$(Version)</FileVersion>
+    <Authors>Kirin Avenleigh</Authors>
+    <Description>Spamroll Giveaway plugin for FFXIV</Description>
+    <PackageProjectUrl>https://github.com/kirin-xiv/OpenSpamroll</PackageProjectUrl>
+    <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
+    <IsPackable>false</IsPackable>
+    <DalamudApiLevel>15</DalamudApiLevel>
+    <TargetFramework>net10.0-windows7.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="SpamrollGiveaway.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Visible>false</Visible>
+    </Content>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="ECommons" Version="*" />
+    <ProjectReference Include="..\extern\FFXIVToolkit\FFXIVSharedLibrary\FFXIVSharedLibrary\FFXIVSharedLibrary.csproj" />
+  </ItemGroup>
+</Project>
+
